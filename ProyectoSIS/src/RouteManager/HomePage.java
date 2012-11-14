@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package RouteManager;
-
+import java.util.Arrays;
 /**
  *
  * @author alberto
@@ -27,13 +27,13 @@ public class HomePage extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTfName = new javax.swing.JTextField();
+        jtfName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTfPass = new javax.swing.JTextField();
-        jBtLogin = new javax.swing.JButton();
+        jbtLogin = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jtfPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(223, 187, 143));
@@ -44,19 +44,19 @@ public class HomePage extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre");
 
-        jTfName.setName("tfName"); // NOI18N
+        jtfName.setName("tfName"); // NOI18N
 
         jLabel3.setText("Contraseña");
 
-        jTfPass.setName("tfPass"); // NOI18N
-
-        jBtLogin.setText("Entrar");
-        jBtLogin.setName("jBtLogin"); // NOI18N
-        jBtLogin.addActionListener(new java.awt.event.ActionListener() {
+        jbtLogin.setText("Entrar");
+        jbtLogin.setName("jbtLogin"); // NOI18N
+        jbtLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtLoginActionPerformed(evt);
+                jbtLoginActionPerformed(evt);
             }
         });
+
+        jLabel4.setBackground(new java.awt.Color(215, 19, 19));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -66,12 +66,20 @@ public class HomePage extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
-                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTfName)
-                    .addComponent(jBtLogin)
-                    .addComponent(jTfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jbtLogin)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtfName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(101, 101, 101))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,14 +87,16 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBtLogin)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtLogin)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -94,37 +104,39 @@ public class HomePage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55)))
-                .addGap(98, 98, 98))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(171, 171, 171))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(56, 56, 56)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(77, 77, 77)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtLoginActionPerformed
-        if(jTfName.getText().equals("Usuario") && jTfPass.getText().equals("usuario"))
-            jLabel4.setText("Login correcto");            
-        else
-            jLabel4.setText("Login incorrrecto");
-    }//GEN-LAST:event_jBtLoginActionPerformed
+    private void jbtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLoginActionPerformed
+        if(jtfName.getText().equals("Usuario") && Arrays.equals(jtfPass.getPassword(),"usuario".toCharArray()))
+        {                     
+            SearchPage search=new SearchPage();
+            this.setVisible(false);
+            search.setVisible(true);
+        }            
+        
+        else                    
+            jLabel4.setText(jtfPass.getPassword().toString());       
+            //jLabel4.setText("Login incorrrecto");                                           
+    }//GEN-LAST:event_jbtLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,13 +173,13 @@ public class HomePage extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTfName;
-    private javax.swing.JTextField jTfPass;
+    private javax.swing.JButton jbtLogin;
+    private javax.swing.JTextField jtfName;
+    private javax.swing.JPasswordField jtfPass;
     // End of variables declaration//GEN-END:variables
 }

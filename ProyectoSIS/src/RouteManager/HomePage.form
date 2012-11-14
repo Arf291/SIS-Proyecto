@@ -25,19 +25,15 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="36" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -46,11 +42,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,8 +54,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Route manager"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
@@ -76,13 +68,25 @@
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTfName" max="32767" attributes="0"/>
-                      <Component id="jBtLogin" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTfPass" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jbtLogin" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" min="-2" pref="161" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jtfName" min="-2" pref="159" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jtfPass" min="-2" pref="156" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -92,16 +96,19 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTfName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfName" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTfPass" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfPass" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jBtLogin" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jbtLogin" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel4" alignment="0" min="-2" pref="19" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="100" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -112,7 +119,7 @@
             <Property name="text" type="java.lang.String" value="Nombre"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTfName">
+        <Component class="javax.swing.JTextField" name="jtfName">
           <Properties>
             <Property name="name" type="java.lang.String" value="tfName" noResource="true"/>
           </Properties>
@@ -122,19 +129,23 @@
             <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTfPass">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="tfPass" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="jBtLogin">
+        <Component class="javax.swing.JButton" name="jbtLogin">
           <Properties>
             <Property name="text" type="java.lang.String" value="Entrar"/>
-            <Property name="name" type="java.lang.String" value="jBtLogin" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="jbtLogin" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtLoginActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtLoginActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="13" green="13" red="d7" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jtfPass">
         </Component>
       </SubComponents>
     </Container>
