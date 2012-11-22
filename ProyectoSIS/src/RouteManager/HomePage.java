@@ -128,14 +128,13 @@ public class HomePage extends javax.swing.JFrame {
     private void jbtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLoginActionPerformed
         if(jtfName.getText().equals("Usuario") && Arrays.equals(jtfPass.getPassword(),"usuario".toCharArray()))
         {                     
-            SearchPage search=new SearchPage();
+            SearchPage search=new SearchPage(jtfName.getText());
             this.setVisible(false);
             search.setVisible(true);
         }            
         
-        else                    
-            jLabel4.setText(jtfPass.getPassword().toString());       
-            //jLabel4.setText("Login incorrrecto");                                           
+        else                                
+            jLabel4.setText("Login incorrrecto");                                           
     }//GEN-LAST:event_jbtLoginActionPerformed
 
     /**
