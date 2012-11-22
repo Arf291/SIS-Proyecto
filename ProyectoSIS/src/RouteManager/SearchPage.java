@@ -2,7 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package RouteManager;
+/*
+import com.google.gdata.client.*;
+import com.google.gdata.client.maps.*;
+import com.google.gdata.data.*;
+import com.google.gdata.data.maps.*;
+import com.google.gdata.util;
+import java.io.IOException;
+import java.net.URL;*/
+
 
 /**
  *
@@ -13,8 +23,16 @@ public class SearchPage extends javax.swing.JFrame {
     /**
      * Creates new form SearchPage
      */
-    public SearchPage() {
+    private String userName;
+    
+    public SearchPage() {        
+        initComponents();        
+    }
+    
+    public SearchPage(String user) {        
         initComponents();
+        userName=user;
+        jlWelcome.setText(jlWelcome.getText()+", "+userName);
     }
 
     /**
@@ -26,7 +44,7 @@ public class SearchPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        jlWelcome = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -35,7 +53,7 @@ public class SearchPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel3.setText("Bienvenido");
+        jlWelcome.setText("Bienvenido");
 
         jLabel1.setText("Origen");
 
@@ -81,7 +99,7 @@ public class SearchPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(138, 138, 138)
-                        .addComponent(jLabel3))
+                        .addComponent(jlWelcome))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -91,7 +109,7 @@ public class SearchPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(jlWelcome)
                 .addGap(80, 80, 80)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(212, Short.MAX_VALUE))
@@ -125,21 +143,23 @@ public class SearchPage extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SearchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
+        //</editor-fold>               
+        
+        /* Create and display the form */        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SearchPage().setVisible(true);
             }
-        });
+        });                
+        
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jlWelcome;
     // End of variables declaration//GEN-END:variables
 }
