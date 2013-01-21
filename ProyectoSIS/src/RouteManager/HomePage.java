@@ -3,20 +3,34 @@
  * and open the template in the editor.
  */
 package RouteManager;
+import BD.XQuery;
 import java.util.Arrays;
-/**
- *
- * @author alberto
- */
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTextField;
+import javax.swing.JToggleButton;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+
 public class HomePage extends javax.swing.JFrame {
 
     /**
      * Creates new form HomePage
      */
-    public HomePage() {
+            
+    public HomePage() {                                   
         initComponents();
+        jError1.setVisible(false);
+        jError1.setVisible(false);
+        validateXML();
     }
-
+    
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,13 +46,15 @@ public class HomePage extends javax.swing.JFrame {
         jtfName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jbtLogin = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jtfPass = new javax.swing.JPasswordField();
+        jbtRegist = new javax.swing.JToggleButton();
+        jError1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Route Manager");
         setBackground(new java.awt.Color(223, 187, 143));
 
-        jLabel1.setText("Route manager");
+        jLabel1.setText("Iniciar sesión");
 
         jPanel1.setToolTipText("");
 
@@ -56,7 +72,16 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setBackground(new java.awt.Color(215, 19, 19));
+        jbtRegist.setText("Registrarse");
+        jbtRegist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtRegistActionPerformed(evt);
+            }
+        });
+
+        jError1.setFont(new java.awt.Font("DejaVu Sans", 0, 11)); // NOI18N
+        jError1.setForeground(new java.awt.Color(240, 11, 11));
+        jError1.setText("Usuario y contraseña erróneos ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -66,20 +91,18 @@ public class HomePage extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jbtLogin)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jtfName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(101, 101, 101))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtfPass, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                            .addComponent(jtfName))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jError1))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jbtLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtRegist, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,12 +114,13 @@ public class HomePage extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jtfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbtLogin)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(100, Short.MAX_VALUE))
+                    .addComponent(jtfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jError1))
+                .addGap(12, 12, 12)
+                .addComponent(jbtLogin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtRegist)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -104,39 +128,81 @@ public class HomePage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(171, 171, 171))
+                .addGap(134, 134, 134)
+                .addComponent(jLabel1))
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGap(77, 77, 77)
+                .addGap(35, 35, 35)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLoginActionPerformed
-        if(jtfName.getText().equals("Usuario") && Arrays.equals(jtfPass.getPassword(),"usuario".toCharArray()))
-        {                     
-            SearchPage search=new SearchPage(jtfName.getText());
+        XQuery query=new XQuery();
+        String name=jtfName.getText();
+        JTextField pass=jtfPass;
+                        
+        if(!query.personExists(name))//) && correctLogin(name,jtfPass.getPassword()))
+            jError1.setVisible(true);                  
+        else
+        {
+            UserPage page=new UserPage(jtfName.getText());
             this.setVisible(false);
-            search.setVisible(true);
-        }            
-        
-        else                                
-            jLabel4.setText("Login incorrrecto");                                           
+            page.setVisible(true);
+        }
+            
     }//GEN-LAST:event_jbtLoginActionPerformed
 
+    public JToggleButton getJbtRegist() {
+        return jbtRegist;
+    }
+    
+    private void jbtRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRegistActionPerformed
+        // TODO add your handling code here:
+        
+        this.setVisible(false);
+        new Registry().setVisible(true);        
+    }//GEN-LAST:event_jbtRegistActionPerformed
+
+    private void validateXML()
+    {
+        try {
+            String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";  
+            String W3C_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema";  
+            
+            String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";  
+            String MY_SCHEMA = "./src/Validation/people.xsd";  
+            String MY_XML= "./src/BD/people.xml";  
+            
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setNamespaceAware(true);  
+            factory.setValidating(true);  
+            
+            factory.setAttribute(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA); 
+            factory.setAttribute(JAXP_SCHEMA_SOURCE, new File(MY_SCHEMA));     
+            
+            DocumentBuilder documentBuilder = factory.newDocumentBuilder();  
+            //documentBuilder.setErrorHandler(
+        
+            Document parse = documentBuilder.parse(new File(MY_XML));
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SAXException ex) {
+            Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
     /**
      * @param args the command line arguments
      */
@@ -163,21 +229,25 @@ public class HomePage extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomePage().setVisible(true);
+                new HomePage().setVisible(true);        
             }
         });
-    }
+                
+     }
+
+
+     // TODO code application logic here        
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jError1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbtLogin;
+    private javax.swing.JToggleButton jbtRegist;
     private javax.swing.JTextField jtfName;
     private javax.swing.JPasswordField jtfPass;
     // End of variables declaration//GEN-END:variables
