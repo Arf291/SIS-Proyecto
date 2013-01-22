@@ -27,7 +27,7 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
         jError1.setVisible(false);
         jError1.setVisible(false);
-        validateXML();
+        validateXML("people");
     }
     
   
@@ -174,15 +174,15 @@ public class HomePage extends javax.swing.JFrame {
         new Registry().setVisible(true);        
     }//GEN-LAST:event_jbtRegistActionPerformed
 
-    private void validateXML()
+    private void validateXML(String file)
     {
         try {
             String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";  
             String W3C_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema";  
             
             String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";  
-            String MY_SCHEMA = "./src/Validation/people.xsd";  
-            String MY_XML= "./src/BD/people.xml";  
+            String MY_SCHEMA = "./src/Validation/"+file+".xsd";  
+            String MY_XML= "./src/BD/"+file+".xml";  
             
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             factory.setNamespaceAware(true);  
